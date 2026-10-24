@@ -23,7 +23,8 @@
   color-scheme: light;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; font-size: 14px; }
+@media (min-width: 1700px) { html { font-size: 15px; } }
 body {
   background: var(--bg); color: var(--text); font-family: var(--font-body); font-weight: 600;
   background-image:
@@ -53,8 +54,8 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
 @layer components {
   /* typography */
   .display { font-family: var(--font-display); font-weight: 400; letter-spacing: .01em; line-height: 1.1; }
-  .h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 5vw, 2.6rem); line-height: 1.08; letter-spacing: .01em; }
-  .h2 { font-family: var(--font-display); font-size: 1.35rem; line-height: 1.15; letter-spacing: .01em; }
+  .h1 { font-family: var(--font-display); font-size: clamp(1.5rem, 4vw, 2.1rem); line-height: 1.08; letter-spacing: .01em; }
+  .h2 { font-family: var(--font-display); font-size: 1.15rem; line-height: 1.15; letter-spacing: .01em; }
   .muted { color: var(--muted); }
   .gold { color: var(--gold-ink); }
   .pink { color: var(--pink); }
@@ -64,16 +65,16 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
   .wrap-narrow { max-width: 680px; margin-inline: auto; }
 
   /* surfaces */
-  .card { display: block; background: var(--card); border: 2px solid var(--edge); border-radius: 22px; padding: 20px; box-shadow: 0 5px 0 var(--shadow); text-align: left; color: inherit; }
+  .card { display: block; background: var(--card); border: 2px solid var(--edge); border-radius: 18px; padding: 16px; box-shadow: 0 4px 0 var(--shadow); text-align: left; color: inherit; }
   button.card, a.card { transition: transform .12s ease, border-color .12s ease; }
   button.card:hover { transform: translateY(-3px); border-color: var(--sky); }
   button.card:active { transform: translateY(1px); }
-  .card-flat { background: var(--card-2); border: 2px solid var(--edge); border-radius: 16px; padding: 14px; }
-  .card-gold { background: var(--gold); color: var(--on-gold); border: 2px solid var(--gold-d); border-radius: 22px; padding: 20px; box-shadow: 0 5px 0 var(--gold-d); }
+  .card-flat { background: var(--card-2); border: 2px solid var(--edge); border-radius: 14px; padding: 12px; }
+  .card-gold { background: var(--gold); color: var(--on-gold); border: 2px solid var(--gold-d); border-radius: 18px; padding: 16px; box-shadow: 0 4px 0 var(--gold-d); }
   .card-gold .bar { background: rgba(42, 29, 0, .2); border-color: rgba(42, 29, 0, .35); }
 
   /* buttons — chunky, pressable */
-  .btn { --b: var(--edge); --bd: var(--shadow); display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 14px; border: 2px solid var(--b); font-weight: 800; font-size: 15px; line-height: 1.2; background: var(--card-2); color: var(--text); box-shadow: 0 4px 0 var(--bd); transition: transform .1s ease, box-shadow .1s ease, filter .15s ease; user-select: none; }
+  .btn { --b: var(--edge); --bd: var(--shadow); display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 9px 16px; border-radius: 12px; border: 2px solid var(--b); font-weight: 800; font-size: 14px; line-height: 1.2; background: var(--card-2); color: var(--text); box-shadow: 0 4px 0 var(--bd); transition: transform .1s ease, box-shadow .1s ease, filter .15s ease; user-select: none; }
   .btn:hover:not(:disabled) { filter: brightness(1.08); }
   .btn:active:not(:disabled) { transform: translateY(3px); box-shadow: 0 1px 0 var(--bd); }
   .btn:disabled { opacity: .5; box-shadow: none; }
@@ -81,19 +82,19 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
   .btn-pink { --b: var(--pink-d); --bd: var(--pink-d); background: var(--pink); color: #fff; }
   .btn-danger { --b: #7f1d1d; --bd: #7f1d1d; background: #e5484d; color: #fff; }
   .btn-ghost { background: transparent; }
-  .btn-sm { padding: 8px 14px; font-size: 13.5px; border-radius: 12px; box-shadow: 0 3px 0 var(--bd); }
+  .btn-sm { padding: 6px 12px; font-size: 13px; border-radius: 12px; box-shadow: 0 3px 0 var(--bd); }
   .btn-block { display: flex; width: 100%; }
-  .icon-btn { padding: 10px; width: 44px; height: 44px; }
+  .icon-btn { padding: 8px; width: 40px; height: 40px; }
 
   .chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 11px; border-radius: 99px; background: var(--card-2); border: 2px solid var(--edge); font-size: 12px; font-weight: 800; }
   .chip-gold { background: color-mix(in srgb, var(--gold) 16%, transparent); border-color: var(--gold-d); color: var(--gold-ink); }
   .chip-pink { background: color-mix(in srgb, var(--pink) 16%, transparent); border-color: var(--pink); color: var(--pink); }
 
   /* answer options */
-  .opt { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; padding: 13px 14px; border-radius: 16px; border: 2px solid var(--edge); background: var(--card-2); color: var(--text); font-weight: 700; font-size: 15px; line-height: 1.35; box-shadow: 0 3px 0 var(--shadow); transition: transform .1s ease, border-color .12s ease, background .12s ease; }
+  .opt { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; padding: 10px 12px; border-radius: 14px; border: 2px solid var(--edge); background: var(--card-2); color: var(--text); font-weight: 700; font-size: 14.5px; line-height: 1.35; box-shadow: 0 3px 0 var(--shadow); transition: transform .1s ease, border-color .12s ease, background .12s ease; }
   .opt:hover:not(:disabled) { border-color: var(--sky); transform: translateY(-1px); }
   .opt:active:not(:disabled) { transform: translateY(2px); box-shadow: 0 1px 0 var(--shadow); }
-  .opt .key { flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 9px; background: var(--bg-2); border: 2px solid var(--edge); font-weight: 800; font-size: 13px; }
+  .opt .key { flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 8px; background: var(--bg-2); border: 2px solid var(--edge); font-weight: 800; font-size: 13px; }
   .opt-right { border-color: var(--good); background: var(--good-bg); }
   .opt-right .key { background: var(--good); color: #04210f; border-color: var(--good); }
   .opt-wrong { border-color: var(--bad); background: var(--bad-bg); }
@@ -103,7 +104,7 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
   .opt-picked .key { background: var(--gold); color: var(--on-gold); border-color: var(--gold-d); }
 
   /* forms */
-  .field { width: 100%; background: var(--bg-2); border: 2px solid var(--edge); border-radius: 14px; padding: 12px 14px; color: var(--text); font-size: 15px; font-weight: 700; font-family: inherit; }
+  .field { width: 100%; background: var(--bg-2); border: 2px solid var(--edge); border-radius: 14px; padding: 10px 12px; color: var(--text); font-size: 14px; font-weight: 700; font-family: inherit; }
   .field:focus { outline: none; border-color: var(--sky); box-shadow: 0 0 0 3px color-mix(in srgb, var(--sky) 25%, transparent); }
   select.field { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' fill='none' stroke='%238fb5b1' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m1 1 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 38px; }
 
@@ -136,7 +137,7 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
   .flip.done:not(.term) .flip-back { background: var(--good-bg); }
 
   /* app shell */
-  .nav-btn { display: flex; align-items: center; gap: 12px; width: 100%; padding: 11px 14px; border-radius: 14px; font-weight: 800; font-size: 14.5px; color: var(--text); background: transparent; border: 2px solid transparent; text-align: left; transition: background .12s ease; }
+  .nav-btn { display: flex; align-items: center; gap: 12px; width: 100%; padding: 9px 12px; border-radius: 12px; font-weight: 800; font-size: 14px; color: var(--text); background: transparent; border: 2px solid transparent; text-align: left; transition: background .12s ease; }
   .nav-btn:hover { background: var(--card-2); }
   .nav-btn[aria-current="page"] { background: var(--gold); color: var(--on-gold); border-color: var(--gold-d); box-shadow: 0 3px 0 var(--gold-d); }
   .tab-btn { display: flex; flex-direction: column; align-items: center; gap: 2px; flex: 1; padding: 6px 2px; font-size: 11px; font-weight: 800; color: var(--muted); background: transparent; border: 0; border-radius: 12px; }

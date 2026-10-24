@@ -3,6 +3,7 @@ import type { Question } from "@/lib/data";
 export type View =
   | "onboard" | "home" | "learn" | "subject" | "play"
   | "battle" | "speed" | "code" | "tf" | "match" | "mock" | "review"
+  | "runner" | "blaster" | "catapult" | "tower" | "maze"
   | "results" | "mistakes" | "coach" | "profile";
 
 export interface AnswerRec { q: Question; selected: number; correct: boolean; xp: number }
@@ -21,4 +22,4 @@ export interface FinishArgs {
 export type FinishFn = (a: FinishArgs) => void;
 export interface GameProps { record: RecordFn; finish: FinishFn; exit: () => void; lang: "en" | "ur" | "mixed" }
 
-export const MODE_LABEL: Record<string, string> = { battle: "Quiz Battle", speed: "Speed Run", code: "Code Arena", tf: "Sahi ya Ghalat", match: "Memory Match", mock: "Mock Exam", review: "Revision Round", daily: "Daily Challenge" };
+export const MODE_LABEL: Record<string, string> = { battle: "Quiz Battle", speed: "Speed Run", code: "Code Arena", tf: "Sahi ya Ghalat", match: "Memory Match", mock: "Mock Exam", review: "Revision Round", runner: "Code Runner", blaster: "Bug Blaster", catapult: "Catapult Quiz", tower: "Server Defense", maze: "Maze Quest", daily: "Daily Challenge" };

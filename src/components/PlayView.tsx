@@ -7,8 +7,11 @@ export function PlayView({ go, best }: { go: (v: View) => void; best: Record<str
     <div>
       <h1 className="h1 flex items-center gap-3"><Gamepad2 className="gold" size={34} /> Choose a game</h1>
       <p className="muted text-sm mt-2">Every question comes with an explanation, so you learn even when you lose.</p>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
-        {MODES.map((m) => (
+      {[{ t: "Action games", list: MODES.filter((m) => m.arcade) }, { t: "Quiz modes", list: MODES.filter((m) => !m.arcade) }].filter((g) => g.list.length).map((g) => (
+      <div key={g.t}>
+      <h2 className="h2 mt-7">{g.t}</h2>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-3">
+        {g.list.map((m) => (
           <div key={m.v} className="card flex flex-col">
             <span className="inline-grid place-items-center w-12 h-12 rounded-xl" style={{ background: m.tint, color: "#12130f", border: "2px solid rgba(0,0,0,.3)" }}><m.Icon size={24} strokeWidth={2.4} /></span>
             <h2 className="display text-xl mt-3">{m.name}</h2>
@@ -18,6 +21,8 @@ export function PlayView({ go, best }: { go: (v: View) => void; best: Record<str
           </div>
         ))}
       </div>
+      </div>
+      ))}
     </div>
   );
 }

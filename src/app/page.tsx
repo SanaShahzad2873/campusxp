@@ -15,13 +15,14 @@ import { SpeedGame } from "@/components/SpeedGame";
 import { TrueFalseGame } from "@/components/TrueFalseGame";
 import { MatchGame } from "@/components/MatchGame";
 import { MockExam } from "@/components/MockExam";
+import { RunnerGame } from "@/components/RunnerGame";
 import { ResultsView, MistakesView } from "@/components/ResultsViews";
 import { CoachView } from "@/components/CoachView";
 import { ProfileView } from "@/components/ProfileView";
 import { Brand } from "@/components/ui";
 import type { FinishArgs, RecordFn, Result, View } from "@/components/types";
 
-const GAME_VIEWS: View[] = ["battle", "speed", "code", "tf", "match", "mock", "review"];
+const GAME_VIEWS: View[] = ["battle", "speed", "code", "tf", "match", "mock", "review", "runner", "blaster", "catapult", "tower", "maze"];
 
 function subscribeOnline(cb: () => void) { window.addEventListener("online", cb); window.addEventListener("offline", cb); return () => { window.removeEventListener("online", cb); window.removeEventListener("offline", cb); }; }
 
@@ -115,7 +116,7 @@ export default function Page() {
     const rec: SessionRec = { id: a.sid, mode: a.mode, subjectId: a.subjectId, topicId: a.topicId, score, xp: score + bonus, correct, total, at: Date.now(), durationSec: a.durationSec };
     let s: Store = { ...s0, xp: s0.xp + bonus + gameXP, claimed: firstTime ? [...s0.claimed, a.sid] : s0.claimed, sessions: [...s0.sessions, rec] };
     const bestVal: Record<string, number> = { speed: correct, battle: score, code: score, tf: score, match: gameXP, mock: total ? Math.round((correct / total) * 100) : 0 };
-    if (a.mode in bestVal) s = { ...s, best: { ...s.best, [a.mode]: Math.max(s.best[a.mode] || 0, bestVal[a.mode]) } };
+    if (a.mode !== "review") s = { ...s, best: { ...s.best, [a.mode]: Math.max(s.best[a.mode] || 0, bestVal[a.mode] ?? score) } };
     const earned = evaluateAchievements(s);
     if (earned.length) s = { ...s, xp: s.xp + earned.reduce((n, x) => n + x.xp, 0), achievements: [...s.achievements, ...earned.map((x) => x.id)] };
     update(() => s);
@@ -180,6 +181,7 @@ export default function Page() {
           {view === "tf" && <TrueFalseGame {...gp} />}
           {view === "match" && <MatchGame {...gp} />}
           {view === "mock" && <MockExam {...gp} />}
+          {view === "runner" && <RunnerGame {...gp} />}
         </div>
       ) : (
         <Shell view={view} go={go} store={store} lvl={lvl} mistakeCount={mistakes.length} online={online}>{content}</Shell>
