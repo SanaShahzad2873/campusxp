@@ -46,7 +46,7 @@ export function Shell({ view, go, store, lvl, mistakeCount, online, children }: 
         </div>
       </header>
 
-      <main className="md:pl-56 pb-28 md:pb-12"><div className="max-w-6xl mx-auto px-5 pt-5">{children}</div></main>
+      <main className="md:pl-56 pb-28 md:pb-12"><div className="max-w-7xl mx-auto px-5 pt-5">{children}</div></main>
 
       <nav className="md:hidden fixed bottom-0 inset-x-0 z-40 flex px-1 pb-[max(env(safe-area-inset-bottom),6px)] pt-1.5" style={{ background: "var(--bg-2)", borderTop: "2px solid var(--edge)" }} aria-label="Mobile">
         {TABS.map(({ id, label, Icon }) => (

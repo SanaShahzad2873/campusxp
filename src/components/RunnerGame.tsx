@@ -8,7 +8,7 @@ import { Explain } from "./ui";
 import type { AnswerRec, GameProps } from "./types";
 
 /* ---- Pseudo-3D camera: x = lateral, y = height above ground, z = distance in front of the camera ---- */
-const W = 480, H = 640, HZ = 170, F = 300, CH = 5.4, ZP = 4.2, ZN = 3.45, ZF = 90, ZSPAWN = 62, LW = 1.7, TOTAL = 10;
+const W = 480, H = 640, HZ = 170, F = 300, CH = 5.4, ZP = 4.2, ZN = 3.45, ZF = 90, ZSPAWN = 46, LW = 1.7, TOTAL = 10;
 const LANE_COL = ["#ff7a59", "#2bb6ff", "#8bd450"];
 const LANE_NAME = ["Left", "Middle", "Right"];
 const TRAIN_COLS = [["#e53935", "#b71c1c", "#ff8a80"], ["#1e88e5", "#0d47a1", "#90caf9"], ["#fbc02d", "#f57f17", "#fff59d"], ["#43a047", "#1b5e20", "#a5d6a7"]];
@@ -121,7 +121,7 @@ function Run({ pool, record, finish, exit, lang }: GameProps & { pool: Question[
     const s = g.current; if (s.paused || s.over) return;
     s.t += dt; s.shake = Math.max(0, s.shake - dt); s.invuln = Math.max(0, s.invuln - dt); s.slide = Math.max(0, s.slide - dt);
     s.speedMul = Math.min(1, s.speedMul + dt * 0.35);
-    const V = Math.min(19, 11 + s.qi * 0.9) * s.speedMul;
+    const V = Math.min(12, 7 + s.qi * 0.5) * s.speedMul;
     s.dist += V * dt; s.score += V * dt * 0.8;
     const tx = laneX(s.lane); s.px += (tx - s.px) * Math.min(1, dt * 13); s.camX += (s.px * 0.5 - s.camX) * Math.min(1, dt * 5);
     if (s.jy > 0 || s.jv > 0) { s.jv -= 24 * dt; s.jy = Math.max(0, s.jy + s.jv * dt); if (s.jy === 0) s.jv = 0; }

@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
 export const metadata: Metadata = { title: "CampusXP — Learn. Play. Level Up.", description: "Gamified Computer Science learning for Pakistani university students. Quiz battles, speed runs and code challenges in English and Urdu.", manifest: "/manifest.json", icons: { icon: "/icon.svg" } };
-export const viewport: Viewport = { themeColor: "#061a1c", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: "#090e22", width: "device-width", initialScale: 1 };
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (<html lang="en" data-theme="dark"><head>
     <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />

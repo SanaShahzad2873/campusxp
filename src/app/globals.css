@@ -2,34 +2,33 @@
 
 /* ---------- Design tokens: "Arcade Campus" — dark teal + gold, chunky 3D buttons ---------- */
 :root {
-  --bg: #061a1c; --bg-2: #0a2326; --card: #0e2e32; --card-2: #133a3f; --edge: #1f5359;
-  --text: #effaf7; --muted: #8fb5b1;
-  --gold: #ffc93c; --gold-d: #b88300; --gold-ink: #ffc93c; --on-gold: #2a1d00;
-  --pink: #ff5d8f; --pink-d: #b82a5b; --sky: #4cc9f0; --sky-d: #1d8fb3;
-  --good: #3ddc97; --bad: #ff6b6b; --good-bg: rgba(61, 220, 151, .14); --bad-bg: rgba(255, 107, 107, .14);
-  --shadow: rgba(0, 0, 0, .35);
+  --bg: #090e22; --bg-2: #0d1431; --card: #121a3b; --card-2: #19234d; --edge: #2a3a78;
+  --text: #eef1ff; --muted: #98a6d8;
+  --gold: #7c5cff; --gold-d: #4a2fd0; --gold-ink: #b9a9ff; --on-gold: #ffffff;
+  --pink: #ff5d9e; --pink-d: #b82a68; --sky: #22d3ee; --sky-d: #0e8fa6;
+  --good: #34d399; --bad: #fb7185; --good-bg: rgba(52, 211, 153, .14); --bad-bg: rgba(251, 113, 133, .14);
+  --shadow: rgba(0, 0, 0, .4);
   --font-display: "Lilita One", "Baloo 2", system-ui, sans-serif;
   --font-body: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-urdu: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Urdu Typesetting", serif;
   color-scheme: dark;
 }
 :root[data-theme="light"] {
-  --bg: #eefaf5; --bg-2: #def2ea; --card: #ffffff; --card-2: #f0fbf6; --edge: #b4d9cc;
-  --text: #0d2a2c; --muted: #4a706d;
-  --gold-ink: #8a5f00; --gold-d: #c48f00;
+  --bg: #f2f4ff; --bg-2: #e6e9fb; --card: #ffffff; --card-2: #f4f5ff; --edge: #c9d0f3;
+  --text: #121839; --muted: #55608f;
+  --gold: #6d4aff; --gold-d: #4a2fd0; --gold-ink: #5a3bdc;
   --pink: #d6336c; --pink-d: #9c1f4b; --sky: #0b7fa8; --sky-d: #075a78;
-  --good: #137a4b; --bad: #c92a2a; --good-bg: rgba(19, 122, 75, .1); --bad-bg: rgba(201, 42, 42, .08);
-  --shadow: rgba(13, 42, 44, .14);
+  --good: #0f8a5f; --bad: #d63a4e; --good-bg: rgba(15, 138, 95, .1); --bad-bg: rgba(214, 58, 78, .08);
+  --shadow: rgba(18, 24, 57, .14);
   color-scheme: light;
 }
 
-html { scroll-behavior: smooth; font-size: 14px; }
-@media (min-width: 1700px) { html { font-size: 15px; } }
+html { scroll-behavior: smooth; font-size: 13px; }
 body {
   background: var(--bg); color: var(--text); font-family: var(--font-body); font-weight: 600;
   background-image:
-    radial-gradient(900px 500px at 85% -10%, color-mix(in srgb, var(--sky) 14%, transparent), transparent 70%),
-    radial-gradient(700px 420px at -5% 105%, color-mix(in srgb, var(--pink) 12%, transparent), transparent 70%);
+    radial-gradient(900px 500px at 85% -10%, color-mix(in srgb, var(--sky) 12%, transparent), transparent 70%),
+    radial-gradient(700px 420px at -5% 105%, color-mix(in srgb, var(--gold) 20%, transparent), transparent 70%);
   background-attachment: fixed; min-height: 100vh;
 }
 * { -webkit-tap-highlight-color: transparent; }
@@ -70,8 +69,8 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
   button.card:hover { transform: translateY(-3px); border-color: var(--sky); }
   button.card:active { transform: translateY(1px); }
   .card-flat { background: var(--card-2); border: 2px solid var(--edge); border-radius: 14px; padding: 12px; }
-  .card-gold { background: var(--gold); color: var(--on-gold); border: 2px solid var(--gold-d); border-radius: 18px; padding: 16px; box-shadow: 0 4px 0 var(--gold-d); }
-  .card-gold .bar { background: rgba(42, 29, 0, .2); border-color: rgba(42, 29, 0, .35); }
+  .card-gold { background: linear-gradient(135deg, var(--gold), var(--gold-d)); color: var(--on-gold); border: 2px solid var(--gold-d); border-radius: 18px; padding: 16px; box-shadow: 0 4px 0 var(--gold-d); }
+  .card-gold .bar { background: rgba(0, 0, 0, .25); border-color: rgba(255, 255, 255, .25); }
 
   /* buttons — chunky, pressable */
   .btn { --b: var(--edge); --bd: var(--shadow); display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 9px 16px; border-radius: 12px; border: 2px solid var(--b); font-weight: 800; font-size: 14px; line-height: 1.2; background: var(--card-2); color: var(--text); box-shadow: 0 4px 0 var(--bd); transition: transform .1s ease, box-shadow .1s ease, filter .15s ease; user-select: none; }
@@ -108,7 +107,7 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
   .field:focus { outline: none; border-color: var(--sky); box-shadow: 0 0 0 3px color-mix(in srgb, var(--sky) 25%, transparent); }
   select.field { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' fill='none' stroke='%238fb5b1' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m1 1 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 38px; }
 
-  .code { background: #04161a; color: #d3f6ee; border: 2px solid var(--edge); border-radius: 14px; padding: 12px 14px; font-size: 13.5px; line-height: 1.6; overflow-x: auto; white-space: pre; }
+  .code { background: #070c1f; color: #d3f6ee; border: 2px solid var(--edge); border-radius: 14px; padding: 12px 14px; font-size: 13.5px; line-height: 1.6; overflow-x: auto; white-space: pre; }
 
   /* progress bars */
   .bar { height: 14px; border-radius: 99px; background: var(--bg-2); border: 2px solid var(--edge); overflow: hidden; }

@@ -57,7 +57,7 @@ export function ProfileView({ store, setStore, lvl, fileRef, confirmReset, setCo
       <Section title="Settings and data">
         <div className="card grid gap-5">
           <div className="grid sm:grid-cols-2 gap-4">
-            <div><label className="label" htmlFor="theme">Theme</label><select id="theme" className="field mt-2" value={store.settings.theme} onChange={(e) => setS("theme", e.target.value as "dark" | "light")}><option value="dark">Dark teal</option><option value="light">Light mint</option></select></div>
+            <div><label className="label" htmlFor="theme">Theme</label><select id="theme" className="field mt-2" value={store.settings.theme} onChange={(e) => setS("theme", e.target.value as "dark" | "light")}><option value="dark">Dark navy</option><option value="light">Light</option></select></div>
             <div><label className="label" htmlFor="lang">Explanation language</label><select id="lang" className="field mt-2" value={store.settings.language} onChange={(e) => setS("language", e.target.value as Store["settings"]["language"])}><option value="en">English</option><option value="ur">Urdu (technical terms in English)</option><option value="mixed">English + Urdu</option></select></div>
             <div><label className="label" htmlFor="goal">Daily goal (questions)</label><input id="goal" type="number" min={5} max={50} className="field mt-2" value={store.settings.dailyGoal} onChange={(e) => setS("dailyGoal", Math.min(50, Math.max(5, Number(e.target.value) || 10)))} /></div>
             <div className="flex items-end gap-2 flex-wrap">
