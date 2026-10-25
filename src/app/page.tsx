@@ -20,6 +20,7 @@ import { ResultsView, MistakesView } from "@/components/ResultsViews";
 import { CoachView } from "@/components/CoachView";
 import { ProfileView } from "@/components/ProfileView";
 import { Brand } from "@/components/ui";
+import { paletteById } from "@/components/Palette";
 import type { FinishArgs, RecordFn, Result, View } from "@/components/types";
 
 const GAME_VIEWS: View[] = ["battle", "speed", "code", "tf", "match", "mock", "review", "runner", "blaster", "catapult", "tower", "maze"];
@@ -55,7 +56,7 @@ export default function Page() {
     /* eslint-enable react-hooks/set-state-in-effect */
   }, []);
   useEffect(() => { if (hydrated) saveStore(store); }, [store, hydrated]);
-  useEffect(() => { document.documentElement.dataset.theme = store.settings.theme; }, [store.settings.theme]);
+  useEffect(() => { const p = paletteById(store.settings.palette); document.documentElement.dataset.palette = p.id; document.documentElement.dataset.theme = p.light ? "light" : "dark"; }, [store.settings.palette]);
   useEffect(() => { if (!toast) return; const id = setTimeout(() => setToast(""), 3500); return () => clearTimeout(id); }, [toast]);
 
   const lvl = levelFromXP(store.xp);
@@ -184,7 +185,7 @@ export default function Page() {
           {view === "runner" && <RunnerGame {...gp} />}
         </div>
       ) : (
-        <Shell view={view} go={go} store={store} lvl={lvl} mistakeCount={mistakes.length} online={online}>{content}</Shell>
+        <Shell view={view} go={go} store={store} lvl={lvl} mistakeCount={mistakes.length} online={online} palette={store.settings.palette} setPalette={(id) => update((s) => ({ ...s, settings: { ...s.settings, palette: id } }))}>{content}</Shell>
       )}
       {toast && <div role="status" className="fixed bottom-24 md:bottom-6 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-2xl text-sm font-extrabold anim-rise max-w-[92vw] text-center" style={{ background: "var(--gold)", color: "var(--on-gold)", border: "2px solid var(--gold-d)", boxShadow: "0 4px 0 var(--gold-d)" }}>{toast}</div>}
     </div>

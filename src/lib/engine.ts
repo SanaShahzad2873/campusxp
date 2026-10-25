@@ -50,7 +50,7 @@ export interface Store {
   v: 1; onboarded: boolean; profile: Profile; xp: number; claimed: string[];
   attempts: Attempt[]; sessions: SessionRec[]; achievements: string[];
   best: Record<string, number>; streak: number; lastStudyDate: string | null;
-  daily: { date: string; answered: number }; settings: { theme: "dark" | "light"; language: "en" | "ur" | "mixed"; sound: boolean; reducedMotion: boolean; dailyGoal: number };
+  daily: { date: string; answered: number }; settings: { theme: "dark" | "light"; palette: string; language: "en" | "ur" | "mixed"; sound: boolean; reducedMotion: boolean; dailyGoal: number };
   masteryAwarded: string[];
 }
 export const ACHIEVEMENTS = [
@@ -81,7 +81,7 @@ export function evaluateAchievements(s: Store): typeof ACHIEVEMENTS {
 
 const KEY = "campusxp_v1";
 export function defaultStore(): Store {
-  return { v: 1, onboarded: false, profile: { nickname: "", degree: "BS Computer Science", semester: "Semester 3", language: "en", createdAt: Date.now() }, xp: 0, claimed: [], attempts: [], sessions: [], achievements: [], best: {}, streak: 0, lastStudyDate: null, daily: { date: todayStr(), answered: 0 }, settings: { theme: "dark", language: "en", sound: true, reducedMotion: false, dailyGoal: 10 }, masteryAwarded: [] };
+  return { v: 1, onboarded: false, profile: { nickname: "", degree: "BS Computer Science", semester: "Semester 3", language: "en", createdAt: Date.now() }, xp: 0, claimed: [], attempts: [], sessions: [], achievements: [], best: {}, streak: 0, lastStudyDate: null, daily: { date: todayStr(), answered: 0 }, settings: { theme: "dark", palette: "violet", language: "en", sound: true, reducedMotion: false, dailyGoal: 10 }, masteryAwarded: [] };
 }
 export function loadStore(): Store {
   try { const raw = localStorage.getItem(KEY); if (!raw) return defaultStore(); const p = JSON.parse(raw) as Store; if (p.v !== 1) return defaultStore(); return { ...defaultStore(), ...p, settings: { ...defaultStore().settings, ...(p.settings || {}) }, profile: { ...defaultStore().profile, ...(p.profile || {}) } }; } catch { return defaultStore(); }

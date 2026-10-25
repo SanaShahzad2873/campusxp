@@ -23,6 +23,40 @@
   color-scheme: light;
 }
 
+/* ---------- Palettes (picked in the sidebar / Profile). "violet" is the default defined above. ---------- */
+:root[data-palette="sunset"] {
+  --bg: #1b0f1f; --bg-2: #25142b; --card: #2e1a36; --card-2: #3a2144; --edge: #5f3a6b;
+  --text: #fff3ee; --muted: #cba6bc;
+  --gold: #ff7a45; --gold-d: #c4481b; --gold-ink: #ffa27a; --on-gold: #2a0d00;
+  --pink: #ff4d8d; --pink-d: #b32558; --sky: #ffc857; --sky-d: #b88a1c;
+  --good: #5eead4; --bad: #ff6b81; --good-bg: rgba(94, 234, 212, .13); --bad-bg: rgba(255, 107, 129, .14);
+  --shadow: rgba(0, 0, 0, .4);
+}
+:root[data-palette="mint"] {
+  --bg: #061a1c; --bg-2: #0a2326; --card: #0e2e32; --card-2: #133a3f; --edge: #1f5359;
+  --text: #effaf7; --muted: #8fb5b1;
+  --gold: #ffc93c; --gold-d: #b88300; --gold-ink: #ffc93c; --on-gold: #2a1d00;
+  --pink: #ff5d8f; --pink-d: #b82a5b; --sky: #4cc9f0; --sky-d: #1d8fb3;
+  --good: #3ddc97; --bad: #ff6b6b; --good-bg: rgba(61, 220, 151, .14); --bad-bg: rgba(255, 107, 107, .14);
+  --shadow: rgba(0, 0, 0, .35);
+}
+:root[data-palette="candy"] {
+  --bg: #fff7e8; --bg-2: #ffecc8; --card: #ffffff; --card-2: #fff3d9; --edge: #f0cf93;
+  --text: #2b1a4f; --muted: #7b6a9c;
+  --gold: #5b5bff; --gold-d: #3a34c9; --gold-ink: #4036e0; --on-gold: #ffffff;
+  --pink: #ff3d86; --pink-d: #b81f5d; --sky: #00a3d1; --sky-d: #06708f;
+  --good: #0fa36b; --bad: #e5384f; --good-bg: rgba(15, 163, 107, .12); --bad-bg: rgba(229, 56, 79, .1);
+  --shadow: rgba(122, 78, 0, .18);
+}
+:root[data-palette="ocean"] {
+  --bg: #eaf6ff; --bg-2: #d5ebfb; --card: #ffffff; --card-2: #f1f8ff; --edge: #b4d6ee;
+  --text: #0a2947; --muted: #4e6f8f;
+  --gold: #0a84ff; --gold-d: #0657b5; --gold-ink: #0a67d0; --on-gold: #ffffff;
+  --pink: #ff4f78; --pink-d: #b82a4d; --sky: #00a99a; --sky-d: #06766c;
+  --good: #0f9d63; --bad: #e0394d; --good-bg: rgba(15, 157, 99, .11); --bad-bg: rgba(224, 57, 77, .09);
+  --shadow: rgba(10, 41, 71, .15);
+}
+
 html { scroll-behavior: smooth; font-size: 13px; }
 body {
   background: var(--bg); color: var(--text); font-family: var(--font-body); font-weight: 600;

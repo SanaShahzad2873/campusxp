@@ -3,6 +3,8 @@ import type { ReactNode } from "react";
 import { Home, BookOpen, Gamepad2, User, RotateCcw, Bot, Flame, Star, Wifi, WifiOff } from "lucide-react";
 import type { levelFromXP, Store } from "@/lib/engine";
 import { Brand, Bar } from "./ui";
+import { PalettePicker, PALETTES } from "./Palette";
+import { Palette as PaletteIcon } from "lucide-react";
 import type { View } from "./types";
 
 const TABS: { id: View; label: string; Icon: typeof Home }[] = [
@@ -12,10 +14,10 @@ const TABS: { id: View; label: string; Icon: typeof Home }[] = [
 ];
 const ACTIVE: Partial<Record<View, View>> = { subject: "learn", results: "play" };
 
-interface Props { view: View; go: (v: View) => void; store: Store; lvl: ReturnType<typeof levelFromXP>; mistakeCount: number; online: boolean; children: ReactNode }
+interface Props { view: View; go: (v: View) => void; store: Store; lvl: ReturnType<typeof levelFromXP>; mistakeCount: number; online: boolean; palette: string; setPalette: (id: string) => void; children: ReactNode }
 
 /** Sidebar on desktop, bottom tab bar + compact header on phones. */
-export function Shell({ view, go, store, lvl, mistakeCount, online, children }: Props) {
+export function Shell({ view, go, store, lvl, mistakeCount, online, palette, setPalette, children }: Props) {
   const cur = ACTIVE[view] ?? view;
   return (
     <>
@@ -35,7 +37,8 @@ export function Shell({ view, go, store, lvl, mistakeCount, online, children }: 
             </button>
           ))}
         </nav>
-        <p className="mt-auto text-xs muted font-bold flex items-center gap-1.5">{online ? <><Wifi size={13} className="text-[var(--good)]" /> Saved on this device</> : <><WifiOff size={13} className="gold" /> Offline — games still work</>}</p>
+        <div className="mt-auto"><PalettePicker value={palette} onChange={setPalette} compact /></div>
+        <p className="mt-3 text-xs muted font-bold flex items-center gap-1.5">{online ? <><Wifi size={13} className="text-[var(--good)]" /> Saved on this device</> : <><WifiOff size={13} className="gold" /> Offline — games still work</>}</p>
       </aside>
 
       <header className="md:hidden flex items-center justify-between px-4 pt-4">
@@ -43,6 +46,7 @@ export function Shell({ view, go, store, lvl, mistakeCount, online, children }: 
         <div className="flex items-center gap-2 text-sm font-extrabold">
           <span className="chip"><Flame size={14} className="text-[var(--pink)]" />{store.streak}</span>
           <span className="chip chip-gold">Lv {lvl.level} · {store.xp} XP</span>
+          <button className="btn btn-ghost icon-btn !w-9 !h-9" aria-label="Change colour theme" onClick={() => setPalette(PALETTES[(PALETTES.findIndex((p) => p.id === palette) + 1) % PALETTES.length].id)}><PaletteIcon size={16} /></button>
         </div>
       </header>
 
